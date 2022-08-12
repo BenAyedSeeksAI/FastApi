@@ -1,20 +1,28 @@
 import imp
 from fastapi import FastAPI
+from fastapi.params import Body
 
 app = FastAPI()
 # def welcome():
 #     return 'Hello world'
 
 @app.get("/")
-def getData():
-    data = {"name" : "Fares",
-            "age" : "24"
-            }
+def root():
+    data = {"message" : "Welcome to our Api",
+    }
     return data
-def HelloWorld():
-    return 'Hello world'
-def MakeWold():
-    return "fares"
+
+@app.get("/get/posts/")
+def getPosts():
+    data = {
+        "data" : "your posts",
+    }
+    return data
+
+@app.post("/create/post/")
+def createPost(payload: dict = Body(...)):
+    print(payload)
+    return {"Message" : f"Post created -{payload['title']}- succesfully"}
 
 
 
