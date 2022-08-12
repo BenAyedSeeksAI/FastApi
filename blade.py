@@ -13,6 +13,8 @@ def getData():
     return data
 def HelloWorld():
     return 'Hello world'
+def MakeWold():
+    return "fares"
 
 
 
